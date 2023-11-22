@@ -13,6 +13,7 @@ export async function POST(request: Request) {
     const hello = await prisma.user.create({ data: body });
     return new Response(JSON.stringify(hello), {
       headers: { "content-type": "application/json" },
+      status: 201,
     });
   } catch (error) {
     return new Response("Could not create user", {

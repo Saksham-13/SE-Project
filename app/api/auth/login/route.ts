@@ -16,6 +16,7 @@ export async function POST(request: Request, context : any) {
       if (body.password=== user[0].password) {
         return new Response(JSON.stringify(user), {
           headers: { "content-type": "application/json" },
+          status: 201,
         });
       }
         else{

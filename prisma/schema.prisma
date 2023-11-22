@@ -31,6 +31,7 @@ model Product {
   id        Int       @id @default(autoincrement())
   name      String
   description   String 
+  howOld    String
   price     Int
   sellerId  Int
   seller    User      @relation(fields: [sellerId], references: [id])

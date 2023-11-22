@@ -1,7 +1,7 @@
 export default function ProductCard(
 {
     id,image,name,howOld,price
-}
+}:any
 
 ) {
     return (

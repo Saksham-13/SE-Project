@@ -36,6 +36,7 @@ model Product {
   sellerId  Int
   images    String @default("")
   seller    User      @relation(fields: [sellerId], references: [id])
+  category  Int  @default(0)
   buyerId   Int?
   buyer     User?     @relation("Buyer", fields: [buyerId], references: [id])
   createdAt DateTime  @default(now())

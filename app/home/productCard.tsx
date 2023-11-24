@@ -1,6 +1,7 @@
+import { Badge } from "@/components/ui/badge"
 export default function ProductCard(
 {
-    id,image,name,howOld,price
+    id,image,name,howOld,price,isSold
 }:any
 
 ) {
@@ -18,8 +19,15 @@ export default function ProductCard(
               width="200"
             />
             <h3 className="font-semibold mb-2">{name}</h3>
+           
             <p className="text-zinc-500 mb-4">{howOld}</p>
+
+            <div className="flex gap-4">
             <strong>&#8377; {price}</strong>
+            {isSold && <Badge variant="secondary">Sold</Badge>}
+            </div>
+           
+
           </div>
 
     )

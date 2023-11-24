@@ -1,9 +1,37 @@
+"use client";
 import Link from "next/link"
 import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+import { useState,useEffect } from "react"
+import { useRouter } from "next/navigation"
+function getUser() {
+  const storedUser = localStorage.getItem("user");
+  const user = storedUser && JSON.parse(storedUser);
+  const userName = user[0].name;
+  const userId = user[0].id;
+  return {userName,userId};
+}
 export default function Search() {
+  const router = useRouter()
+    const handleLogout = () => {
+        localStorage.removeItem("user");
+        router.push("/login");
+      };
+
+    const [user, setUser] = useState({
+        name: "Username",
+        id: 0,
+    });
+    useEffect(() => {
+        const {userName,userId} = getUser();
+        setUser({
+            name: userName,
+            id: userId,
+        });
+    }, []);
     return(
         <nav className="fixed top-0 z-10 w-full bg-white flex items-center justify-between px-6 py-4 border-b">
-        <Link className="font-semibold text-lg" href="#">
+        <Link className="font-semibold text-lg" href="/">
           Used Electronics
         </Link>
         <div className="flex-1 ml-8">
@@ -14,6 +42,16 @@ export default function Search() {
             </div>
           </form>
         </div>
+        <div className="flex gap-4 mx-2 items-center">
+        <Link className="text-lg" href="/user">
+            {user.name}
+          </Link>
+        <Button className="p-2" variant="destructive" onClick= {handleLogout}>
+          Logout
+        </Button>
+
+        </div>
+       
       </nav>
     )
 }

@@ -2,13 +2,13 @@
 import {Button} from "@/components/ui/button";
 import { useState } from "react";
 const categories = [
-    "Mobiles",
-    "Laptops",
-    "Tablets",
-    "Cameras",
-    "Televisions",
-    "Games",
-    "Accessories",
+    "SoCs",
+    "Processors",
+    "Sensors",
+    "Displays",
+    "Memory",
+    "Connectivity",
+    "Power Management",
     ]
 const Prices = [
     "Under Rs.500",
@@ -26,14 +26,18 @@ export default function Sidebar(
         handleCategorySelect(0);
 
       }
+      const resetPrice = () => {
+        handlePriceSelect(0);
+
+      }
     const handlePriceSelect = (price:any) => {
             setSelectedPrice(price);
-            
             onPriceSelect(price);
             // console.log("selectedPrice",selectedPrice)
             // console.log("prince",price)
         }
     const handleCategorySelect = (category:any) => {
+        resetPrice()
         setSelectedCategory(category);
         onCategorySelect(category);
         // console.log(category)

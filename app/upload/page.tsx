@@ -13,6 +13,7 @@ export default function Component() {
   const [productAge, setProductAge] = useState("");
   const [productImageLink, setProductImageLink] = useState("");
   const [productPrice, setProductPrice] = useState("");
+  const [productCategory, setProductCategory] = useState(0);
   const handleSubmit = (e: any) => {
     e.preventDefault();
     const storedUser = localStorage.getItem("user");
@@ -26,8 +27,11 @@ export default function Component() {
       howOld: productAge,
       price: parseInt(productPrice),
       images: productImageLink,
+      category: productCategory + 1,
       sellerId: userId,
+
     };
+    console.log(newProduct);
 
     // Send a POST request to the endpoint
     fetch("http://localhost:3000/api/products", {
@@ -103,6 +107,23 @@ export default function Component() {
                   value={productImageLink}
                   onChange={(e) => setProductImageLink(e.target.value)}
                 />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="product-category">Category</Label>
+                <select
+                  className="focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border h-10 pl-2 pr-4 border-gray-300 rounded-md"
+                  id="product-category"
+                  value={productCategory}
+                  onChange={(e) => setProductCategory(parseInt(e.target.value))}
+                >
+                  <option value={0}>SoCs</option>
+                  <option value={1}>Processors</option>
+                  <option value={2}>Sensors</option>
+                  <option value={3}>Displays</option>
+                  <option value={4}>Memory</option>
+                  <option value={5}>Connectivity</option>
+                  <option value={6}>Other</option>
+                </select>
               </div>
               <div className="space-y-2">
                 <Label htmlFor="product-price">Price</Label>

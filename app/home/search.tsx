@@ -13,7 +13,13 @@ function getUser() {
 }
 export default function Search({ isSearch }: any) {
   const router = useRouter();
-  const handleSearch = () => {};
+  const [searchTerm, setSearchTerm] = useState("");
+  const handleSearch = (event: React.FormEvent) => {
+    event.preventDefault();
+    if (searchTerm.trim() !== "") {
+      router.push(`/search/${searchTerm}`);
+    }
+  };
   const handleLogout = () => {
     localStorage.removeItem("user");
     router.push("/login");
@@ -37,13 +43,15 @@ export default function Search({ isSearch }: any) {
       </Link>
       {isSearch && (
         <div className="flex-1 ml-8">
-          <form>
+          <form onSubmit={handleSearch}>
             <div className="relative">
               <IconSearch className="absolute left-2.5 top-2.5 h-4 w-4 text-zinc-500" />
               <Input
                 className="pl-8 w-full bg-white"
                 placeholder="Search products..."
                 type="search"
+                value={searchTerm}
+            onChange={(event) => setSearchTerm(event.target.value)}
               />
             </div>
           </form>

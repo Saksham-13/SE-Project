@@ -8,7 +8,7 @@ const categories = [
     "Displays",
     "Memory",
     "Connectivity",
-    "Power Management",
+    "Other"
     ]
 const Prices = [
     "Under Rs.500",

@@ -21,12 +21,14 @@ export default  function Component() {
     const [products, setProducts] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
     const [productsJson, setProductsJson] = useState([]);
+    const [p, setP] = useState([]);
     useEffect(() => {
         const fetchProducts = async () => {
             const products = await getProducts();
             setIsLoaded(true);
             setProducts(products);
             setProductsJson(products);
+            setP(products);
             // Store products JSON in a constant
             // console.log(productsJson);
           };
@@ -47,16 +49,28 @@ export default  function Component() {
             setProducts(productsJson.filter((product:any) => product.price > 1000 && product.price < 5000))
         }
         else{
-            setProducts(productsJson)
+            setProducts(p)
         }
       }
     const handleCategorySelect = (category:any) => {
+
+      if (category === 0) {
         setSelectedCategory(category);
+        setProductsJson(p);
+        setProducts(p);
+      }
+      else {
+        setSelectedCategory(category);
+        console.log(category)
+        setProducts(p.filter((product:any) => product.category == category))
+        setProductsJson(p.filter((product:any) => product.category == category))
+      }
+
       };
   return (
     <div className="flex flex-col min-h-screen">
     <div className="h-[73px]">
-    <Search/>
+    <Search isSearch={true}/>
     </div>
     
      

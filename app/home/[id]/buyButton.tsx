@@ -11,7 +11,7 @@ export default function BuyButton({product}:any){
     fetch(`http://localhost:3000/api/products/${product.id}`)
     .then((response) => response.json())
     .then((data) => {
-        if(data.buyerId== buyerId);
+        if(data.buyerId== buyerId)
         setIsBought(true)
       })
 

@@ -1,4 +1,5 @@
 "use client";
+import Search from "../home/search";
 import { useEffect, useState } from "react";
 import ProductCard from "../home/productCard";
 import SkeletonCard from "../home/skeletonCard";
@@ -28,8 +29,10 @@ export default function User() {
   }, []);
 
   return (
+    <div className="hihi">
+        <Search isSearch={false} />
     <div className="p-4 space-y-4">
-      <h2 className="text-5xl pl-6 font-bold">Listed Products:</h2>
+      <h2 className="text-5xl pl-6 mt-20 font-bold">Listed Products:</h2>
       <div className="flex-1 grid gap-6 p-6 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
   {products.sold && isLoaded ? (
     products.sold.map((product: any, index: number) => {
@@ -66,5 +69,8 @@ export default function User() {
 }
         </div>
     </div>
+
+    </div>
+    
   );
 }

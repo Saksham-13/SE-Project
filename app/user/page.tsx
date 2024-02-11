@@ -32,7 +32,7 @@ export default function User() {
     const user = storedUser && JSON.parse(storedUser);
     const userId = user[0].id;
 
-    fetch("http://localhost:3000/api/products/user", {
+    fetch("/api/products/user", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

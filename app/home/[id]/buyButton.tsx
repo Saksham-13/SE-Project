@@ -8,7 +8,7 @@ export default function BuyButton({product}:any){
         const storedUser = localStorage.getItem("user");
       const user = storedUser && JSON.parse(storedUser);
       const buyerId = user[0].id;
-    fetch(`http://localhost:3000/api/products/${product.id}`)
+    fetch(`/api/products/${product.id}`)
     .then((response) => response.json())
     .then((data) => {
         if(data.buyerId== buyerId)
@@ -26,7 +26,7 @@ export default function BuyButton({product}:any){
       const obj = {
         buyerId:buyerId
       }
-      fetch(`http://localhost:3000/api/products/${id}`, {
+      fetch(`/api/products/${id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -1,5 +1,5 @@
 async function getProducts(search: any) {
-    const res = await fetch("http://localhost:3000/api/products", { cache: 'no-store' });
+    const res = await fetch("/api/products", { cache: 'no-store' });
   
     const products1 = await res.json();
     const filteredProducts = products1.filter((product: any) => {

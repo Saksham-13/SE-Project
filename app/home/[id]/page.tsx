@@ -1,7 +1,7 @@
 import BuyButton from "./buyButton"
 import Search from "../search"
 async function getProduct(id:string) {
-    const data = await fetch(`/api/products/${id}`)
+    const data = await fetch(`http://localhost:3000/api/products/${id}`)
     const product = await data.json()
     console.log(product)
     return product

@@ -34,7 +34,7 @@ export default function Component() {
     console.log(newProduct);
 
     // Send a POST request to the endpoint
-    fetch("/api/products", {
+    fetch("http://localhost:3000/api/products", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
